@@ -124,6 +124,7 @@ table {
 }
 
 body {
+  white-space: nowrap;
   width: 100%;
   display: -webkit-flex;
   display: -webkit-box;
