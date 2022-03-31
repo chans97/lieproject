@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>만우절 거짓말 그만!</title>
 
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
         <script>
@@ -32,6 +32,7 @@
 
 
         document.getElementById("kakaoBtn").addEventListener('click', () => {
+            name = document.getElementById("name").value;
             const shareKakao = () => {
                 Kakao.Link.createDefaultButton({
                     container: "#kakaoBtn", // 카카오공유버튼ID
@@ -41,16 +42,16 @@
                         description: "4월 1일 까지 배송지를 입력해주세요. 입력하지 않아도 상관없습니다. (배송주소는 알 필요 없어요.)", // 보여질 설명
                         imageUrl: sendUrl + "/chicken.png", // 콘텐츠 URL
                         link: {
-                            mobileWebUrl: sendUrl,
-                            webUrl: sendUrl,
+                            mobileWebUrl: sendUrl + "/chicken.html",
+                            webUrl: sendUrl + "/chicken.html",
                         },
                     },
                     buttons: [
                         {
                             title: "선물 확인하기",
                             link: {
-                                mobileWebUrl: sendUrl,
-                                webUrl: sendUrl,
+                                mobileWebUrl: sendUrl + "/chicken.html",
+                                webUrl: sendUrl + "/chicken.html",
                             },
                         },
                     ],
@@ -59,9 +60,6 @@
             shareKakao();
         }
         );
-        window.addEventListener('keyup', () => {
-            name = document.getElementById("name").value;
-        });
     </script>
 
 </html>

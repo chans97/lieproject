@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>만우절 거짓말 그만!</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+        </style>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+            // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+
+
+        </script>
+
+    </head>
+
+    <body>
+        <div class="main">
+            <div id="load" class="load">
+                <img class="loading" src="/loading.svg">
+                <span id="mention" class="mention">잠시만 기다려주세요...</span>
+            </div>
+            <div id="ending" style="display: none;" class="ending">
+                <span class="lie">
+
+                    힝~ 속았지~
+                </span>
+                <span class="loveyou">
+                    그래도 널 사랑해~~친구야~~~!!
+                </span>
+                <div class="linkdiv">
+                    <div id="kakaoBtn" class="angry">친구 응징하기</div>
+                    <div class="dotoo">나도 구라치기</div>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+    <script>
+        const mention = document.getElementById("mention");
+        const ending = document.getElementById("ending");
+        const load = document.getElementById("load");
+        let checkbool = true;
+        let cnt = "완료 중입니다.";
+        setTimeout(() => {
+            clearInterval(sinterval);
+            load.style.display = "none";
+            ending.style.display = "flex";
+        }, 1000)
+        let sinterval = setInterval(() => {
+            if (checkbool) {
+                checkbool = false;
+                mention.innerHTML = "..."
+                setTimeout(() => { mention.innerHTML = "선물을 확인 중입니다...." }, 500)
+
+            }
+            else {
+
+                checkbool = true;
+                mention.innerHTML = "..."
+                setTimeout(() => { mention.innerHTML = cnt }, 500)
+                cnt = "거의 " + cnt;
+            }
+        }, 2000)
+
+
+
+        Kakao.init('81b5b346e82754f693c0f2e2e65631a3');
+
+        const sendUrl = "https://dontliekk.netlify.app/";
+        // SDK 초기화 여부를 판단합니다.
+
+
+        let name = "";
+
+
+        document.getElementById("kakaoBtn").addEventListener('click', () => {
+            name = document.getElementById("name").value;
+            const shareKakao = () => {
+                Kakao.Link.createDefaultButton({
+                    container: "#kakaoBtn", // 카카오공유버튼ID
+                    objectType: "feed",
+                    content: {
+                        title: "어 너랑 안 놀아", // 보여질 제목
+                        description: "상대방이 매우 화난 듯하니...진짜 선물 빨리 보내주세요...", // 보여질 설명
+                        imageUrl: sendUrl + "/cat.jpg", // 콘텐츠 URL
+                        link: {
+                            mobileWebUrl: sendUrl,
+                            webUrl: sendUrl,
+                        },
+                    },
+                });
+            }
+            shareKakao();
+        }
+        );
+    </script>
+
+</html>
