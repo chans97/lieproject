@@ -10,10 +10,10 @@
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
         <script>
             // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
-            Kakao.init('81b5b346e82754f693c0f2e2e65631a3');
+
             const sendUrl = "https://swftest.netlify.app";
             // SDK 초기화 여부를 판단합니다.
-            console.log(Kakao.isInitialized());
+
 
             const shareTwitter = () => {
                 var sendText = "스우파 테스트"; // 전달할 텍스트
@@ -28,9 +28,12 @@
     <body>
         test
         <button onclick="shareTwitter()">나도 거짓말 치기</button>
-        <button id="share">나도 거짓말 치기</button>
+        <button id="kakaoBtn">나도 거짓말 치기</button>
     </body>
     <script>
+        Kakao.init('81b5b346e82754f693c0f2e2e65631a3');
+
+
         const shareKakao = () => {
             Kakao.Link.createDefaultButton({
                 container: "#kakaoBtn", // 카카오공유버튼ID
@@ -55,7 +58,7 @@
                 ],
             });
         };
-        document.getElementById("share").addEventListener('click', () => {
+        document.getElementById("kakaoBtn").addEventListener('click', () => {
             shareKakao();
             console.log("rnfk");
         });
