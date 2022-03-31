@@ -177,6 +177,7 @@ body {
   margin-bottom: 20px;
 }
 .ending {
+  width: 100%;
   display: -webkit-flex;
   display: -webkit-flex;
   display: -webkit-box;
@@ -307,6 +308,7 @@ body {
   font-weight: 100;
   font-size: 8px;
   line-height: 15px;
+  padding-bottom: 30px;
   display: -webkit-flex;
   display: -webkit-box;
   display: -ms-flexbox;
