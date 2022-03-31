@@ -124,6 +124,7 @@ table {
 }
 
 body {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,10 +231,7 @@ body {
   transform: translatey(-10px);
 }
 .footer {
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 30px;
   font-weight: 100;
   font-size: 8px;
   line-height: 15px;
