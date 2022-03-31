@@ -193,6 +193,7 @@ body {
   align-items: center;
 }
 .lie {
+  padding-top: 50px;
   font-size: xx-large;
   font-weight: 800;
   margin-bottom: 20px;
