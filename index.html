@@ -29,41 +29,36 @@
         // SDK 초기화 여부를 판단합니다.
 
 
-        const shareKakao = () => {
-            let name = "";
 
-            Kakao.Link.createDefaultButton({
-                container: "#kakaoBtn", // 카카오공유버튼ID
-                objectType: "feed",
-                content: {
-                    title: name + "님이 사랑을 선물하였습니다.", // 보여질 제목
-                    description: "4월 1일 까지 배송지를 입력해주세요. 입력하지 않아도 상관없습니다. (배송주소는 알 필요 없어요.)", // 보여질 설명
-                    imageUrl: sendUrl + "/chicken.jpg", // 콘텐츠 URL
-                    link: {
-                        mobileWebUrl: sendUrl,
-                        webUrl: sendUrl,
-                    },
-                },
-                buttons: [
-                    {
-                        title: "배송지 입력하기",
-                        link: {
-                            mobileWebUrl: sendUrl,
-                            webUrl: sendUrl,
-                        },
-                    },
-                    {
-                        title: "메세지카드 열기",
-                        link: {
-                            mobileWebUrl: sendUrl,
-                            webUrl: sendUrl,
-                        },
-                    },
-                ],
-            });
-        };
         document.getElementById("kakaoBtn").addEventListener('click', () => {
-            shareKakao();
+
+            const shareKakao = () => {
+                let name = "";
+
+                Kakao.Link.createDefaultButton({
+                    container: "#kakaoBtn", // 카카오공유버튼ID
+                    objectType: "feed",
+                    content: {
+                        title: name + "님이 사랑을 선물하였습니다.", // 보여질 제목
+                        description: "4월 1일 까지 배송지를 입력해주세요. 입력하지 않아도 상관없습니다. (배송주소는 알 필요 없어요.)", // 보여질 설명
+                        imageUrl: sendUrl + "/chicken.png", // 콘텐츠 URL
+                        link: {
+                            mobileWebUrl: sendUrl,
+                            webUrl: sendUrl,
+                        },
+                    },
+                    buttons: [
+                        {
+                            title: "선물 확인하기",
+                            link: {
+                                mobileWebUrl: sendUrl,
+                                webUrl: sendUrl,
+                            },
+                        },
+                    ],
+                });
+                shareKakao();
+            };
         });
         window.addEventListener('keyup', () => {
             name = document.getElementById("name").value;
