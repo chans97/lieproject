@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>만우절 거짓말 그만!</title>
-
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <link rel="stylesheet" href="style.css">
         <script>
             // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
 
@@ -17,25 +17,59 @@
     </head>
 
     <body>
-        test
-        <input id="name" type="text" placeholder="보여질 이름을 입력하세요">
-        <button id="kakaoBtn">나도 거짓말 치기</button>
+        <div class="main">
+            <div id="ending" class="ending">
+                <span class="lie">
+                    만우절 대작전~~~~!!
+                </span>
+                <div class="loveyoudiv">
+                    <span>
+                        **경고**
+                    </span>
+                    <span>
+                        친구가 화날 수 있으니 찐친한테만 할 것
+                    </span><span>
+                        아래 이름을 입력하고, 원하는 버튼을 두 번 클릭하세요.
+                    </span>
+                </div>
+                <input id="name" type="text" placeholder="보여질 이름을 입력하세요">
+                <div class="linkdiv">
+                    <div id="kakaoBtn1" class="angry">
+                        <div class="cropped1">
+
+                            <img class="angryimg" src="/chicken.png" alt="chicken" srcset="">
+                        </div>
+                        치킨으로 농랑하기
+                    </div>
+                    <div id="kakaoBtn2" class="dotoo">
+                        <div class="cropped1">
+
+                            <img class="angryimg" src="/love.png" alt="love" srcset="">
+                        </div>
+                        장미꽃으로 혼내주기
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <span>©Chance</span>
+                <span>Develop by | chansoo920@gmail.com</span>
+            </div>
+        </div>
     </body>
     <script>
         Kakao.init('81b5b346e82754f693c0f2e2e65631a3');
 
         const sendUrl = "https://dontliekk.netlify.app/";
-        // SDK 초기화 여부를 판단합니다.
 
 
-        let name = "";
+        let name = "상대방";
 
 
-        document.getElementById("kakaoBtn").addEventListener('click', () => {
+        document.getElementById("kakaoBtn1").addEventListener('click', () => {
             name = document.getElementById("name").value;
             const shareKakao = () => {
                 Kakao.Link.createDefaultButton({
-                    container: "#kakaoBtn", // 카카오공유버튼ID
+                    container: "#kakaoBtn1", // 카카오공유버튼ID
                     objectType: "feed",
                     content: {
                         title: name + "님이 사랑을 선물하였습니다.", // 보여질 제목
@@ -58,6 +92,35 @@
                 });
             }
             shareKakao();
+        }
+        );
+        document.getElementById("kakaoBtn2").addEventListener('click', () => {
+            name = document.getElementById("name").value;
+            const shareKakao2 = () => {
+                Kakao.Link.createDefaultButton({
+                    container: "#kakaoBtn2", // 카카오공유버튼ID
+                    objectType: "feed",
+                    content: {
+                        title: name + "님이 사랑을 고백하였습니다.", // 보여질 제목
+                        description: name + "님의 고백을 받아주세요. 4월 1일 까지 배송지를 입력해주세요. 입력하지 않아도 상관없습니다.", // 보여질 설명
+                        imageUrl: sendUrl + "/love.png", // 콘텐츠 URL
+                        link: {
+                            mobileWebUrl: sendUrl + "/chicken.html",
+                            webUrl: sendUrl + "/chicken.html",
+                        },
+                    },
+                    buttons: [
+                        {
+                            title: "고백 받아주기",
+                            link: {
+                                mobileWebUrl: sendUrl + "/chicken.html",
+                                webUrl: sendUrl + "/chicken.html",
+                            },
+                        },
+                    ],
+                });
+            }
+            shareKakao2();
         }
         );
     </script>
